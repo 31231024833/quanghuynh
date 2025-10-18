@@ -1,59 +1,107 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Khoa CNTTKD - Học HTML</title>
 
-  <meta name="keywords" content="Khoa CNTTKD, HTML" />
-  <meta property="og:title" content="Khoa CNTTKD" />
-  <meta property="og:description" content="Học HTML" />
+  <meta name="keywords" content="Khoa CNTTKD, HTML, UEH" />
+  <meta property="og:title" content="Khoa CNTTKD - UEH" />
+  <meta property="og:description" content="Bài tập HTML - Môn Thương mại điện tử" />
   <meta property="og:image"
         content="https://future.ueh.edu.vn/wp-content/uploads/2023/12/cropped-Thiet-ke-chua-co-ten-32x32.png"
         sizes="32x32" />
 
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #004b8d;
+      color: white;
       text-align: center;
-      margin: 40px;
+      padding: 20px 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header img {
+      width: 1000px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    main {
+      text-align: center;
+      padding: 30px 20px;
     }
 
     h1 {
       color: #0d47a1;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin: 8px 0;
     }
 
     a {
-      color: blue;
-      font-weight: bold;
+      display: inline-block;
+      background-color: #004b8d;
+      color: white;
       text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 6px;
+      margin-top: 20px;
+      transition: background 0.2s ease-in-out;
     }
 
     a:hover {
-      text-decoration: underline;
+      background-color: #0d5fc2;
     }
 
-    img {
-      display: block;
-      margin: 0 auto 20px auto;
+    footer {
+      margin-top: 50px;
+      background-color: #e3f2fd;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.95rem;
+      border-top: 2px solid #004b8d;
+    }
+
+    footer strong {
+      color: #004b8d;
     }
   </style>
 </head>
 
 <body>
-  <!-- Ảnh logo đặt trên cùng -->
-  <img
-    width="1200"
-    height="300"
-    src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png"
-    alt="Logo Khoa Công nghệ Thông tin Kinh doanh"
-  />
+  <header>
+    <img
+      src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png"
+      alt="Logo Khoa Công nghệ Thông tin Kinh doanh"
+    />
+    <h1>Chào mừng đến với nội dung học HTML</h1>
+  </header>
 
-  <h1>Chào mừng đến với nội dung học HTML</h1>
+  <main>
+    <p>Đây là bài tập HTML thuộc môn <strong>Thương mại điện tử</strong>.</p>
+    <p>Khám phá và tìm hiểu các thẻ cơ bản trong HTML5.</p>
 
-  <a href="https://bit.ueh.edu.vn/dao-tao">Đào tạo</a>
+    <a href="https://bit.ueh.edu.vn/dao-tao" target="_blank">Tìm hiểu thêm về chương trình đào tạo</a>
+  </main>
+
+  <footer>
+    <p><strong>Giảng viên hướng dẫn:</strong> TS. Nguyễn Mạnh Tuấn</p>
+    <p><strong>Sinh viên thực hiện:</strong> Huỳnh Nhật Quang – MSSV: <strong>31231024833</strong></p>
+    <p><strong>Lớp:</strong> TMĐT – Khoa CNTTKD, UEH</p>
+  </footer>
 </body>
-
 </html>
