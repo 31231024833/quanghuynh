@@ -1,1 +1,28 @@
-Hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Khoa CNTTKD - Học HTML</title>
+
+    <meta name="keywords" content="Khoa CNTTKD, HTML" />
+    <meta property="og:title" content="Khoa CNTTKD" />
+    <meta property="og:description" content="Học HTML" />
+    <meta property="og:image"
+        content="https://future.ueh.edu.vn/wp-content/uploads/2023/12/cropped-Thiet-ke-chua-co-ten-32x32.png"
+        sizes="32x32" />
+</head>
+
+<body bgcolor="yellow" vlink="blue">
+    <h1>Chào mừng đến với nội dung học HTML</h1>
+
+    <img width="1200" height="300" src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png"
+        alt="Logo Khoa Công nghệ Thông tin Kinh doanh" />
+
+    <br><br>
+
+    <a href="https://bit.ueh.edu.vn/dao-tao">Đào tạo</a>
+</body>
+
+</html>
