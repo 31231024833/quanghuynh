@@ -1,28 +1,37 @@
+# 🧩 Bài tập HTML – Khoa CNTTKD
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+## 📘 Giới thiệu
+Dự án này gồm các file **HTML cơ bản** được thực hiện trong môn **Thương mại điện tử**.  
+Mục tiêu giúp sinh viên hiểu và vận dụng các **thẻ, thuộc tính HTML5**, đồng thời rèn luyện kỹ năng xây dựng trang web cơ bản.
 
-    <title>Khoa CNTTKD - Học HTML</title>
+---
 
-    <meta name="keywords" content="Khoa CNTTKD, HTML" />
-    <meta property="og:title" content="Khoa CNTTKD" />
-    <meta property="og:description" content="Học HTML" />
-    <meta property="og:image"
-        content="https://future.ueh.edu.vn/wp-content/uploads/2023/12/cropped-Thiet-ke-chua-co-ten-32x32.png"
-        sizes="32x32" />
-</head>
+## 🧱 Nội dung chính
+| File | Nội dung | Ghi chú |
+|------|-----------|---------|
+| **index.html** | Trang chính, có logo Khoa CNTTKD và liên kết đến các bài tập. | Nền vàng, link màu đỏ |
+| **Baitap1.html** | Thực hành cấu trúc HTML cơ bản. | Có hình ảnh, tiêu đề, liên kết |
+| **Baitap2.html** | Thực hành các thẻ meta, title, favicon. | Áp dụng cho SEO và nhận diện thương hiệu |
 
+---
+
+## 🖥️ Cách mở file
+1. Mở thư mục dự án bằng **Visual Studio Code**.  
+2. Mở file `index.html`.  
+3. Nhấn chuột phải → chọn **“Open with Live Server”**  
+   *(hoặc double-click để mở trực tiếp trong trình duyệt)*.
+
+---
+
+## 🌐 Một số cú pháp HTML đã sử dụng
+```html
+<!-- Thẻ tiêu đề và meta SEO -->
+<title>Khoa CNTTKD - Học HTML</title>
+<meta name="keywords" content="Khoa CNTTKD, HTML">
+<meta name="description" content="Học HTML cơ bản trong môn TMĐT">
+
+<!-- Thẻ favicon -->
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+
+<!-- Thẻ body với màu nền và liên kết -->
 <body bgcolor="yellow" vlink="blue">
-    <h1>Chào mừng đến với nội dung học HTML</h1>
-
-    <img width="1200" height="300" src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png"
-        alt="Logo Khoa Công nghệ Thông tin Kinh doanh" />
-
-    <br><br>
-
-    <a href="https://bit.ueh.edu.vn/dao-tao">Đào tạo</a>
-</body>
-
-</html>
