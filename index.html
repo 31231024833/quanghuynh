@@ -1,105 +1,179 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Khoa CNTTKD - Học HTML</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang cá nhân - Huỳnh Nhật Quang</title>
 
-  <meta name="keywords" content="Khoa CNTTKD, HTML, UEH" />
-  <meta property="og:title" content="Khoa CNTTKD - UEH" />
-  <meta property="og:description" content="Bài tập HTML - Môn Phát triển ứng dụng thương mại điện tử" />
-  <meta property="og:image"
-        content="https://future.ueh.edu.vn/wp-content/uploads/2023/12/cropped-Thiet-ke-chua-co-ten-32x32.png"
-        sizes="32x32" />
+    <meta name="keywords" content="Khoa CNTTKD, HTML, UEH, Huỳnh Nhật Quang, 31231024833" />
+    <meta property="og:title" content="Bài tập HTML - Huỳnh Nhật Quang" />
+    <meta property="og:description" content="Bài tập HTML - Môn Phát triển ứng dụng thương mại điện tử" />
+    <meta property="og:image" content="https://github.com/31231024833/quanghuynh/blob/main/retouch_2024092915583726.jpg?raw=true" />
 
-  <style>
-    body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background-color: #f8fafc;
-      color: #222;
-      margin: 0;
-      padding: 0;
-    }
+    <style>
+        /* --- Style gốc từ file mới --- */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f8fafc; /* Nền từ file mới */
+            color: #222;
+            margin: 0;
+            padding: 0;
+        }
 
-    header {
-      background-color: white; /* 🌟 đổi từ xanh sang trắng */
-      color: #004b8d;
-      text-align: center;
-      padding: 20px 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+        header {
+            background-color: white;
+            text-align: center;
+            padding: 20px 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
 
-    header img {
-      width: 1000px;
-      height: auto;
-      margin-bottom: 10px;
-    }
+        header img {
+            max-width: 420px; /* Chỉnh lại cho vừa vặn */
+            height: auto;
+        }
 
-    main {
-      text-align: center;
-      padding: 30px 20px;
-    }
+        main {
+            padding: 30px 20px; /* Vùng đệm cho nội dung chính */
+        }
+        
+        footer {
+            margin-top: 50px;
+            background-color: #e3f2fd;
+            padding: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+            border-top: 2px solid #004b8d;
+        }
 
-    h1 {
-      color: #0d47a1;
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
+        footer strong {
+            color: #004b8d;
+        }
 
-    p {
-      font-size: 1.1rem;
-      margin: 8px 0;
-    }
+        /* --- Style gốc từ file index.html (profile) --- */
+        .container {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto; /* Xóa margin-top để dính vào header */
+            padding: 30px;
+            line-height: 1.6;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
 
-    a {
-  display: inline-block;
-  background-color: #1f6e64; /* 🌿 màu xanh UEH */
-  color: #ffffff; /* chữ trắng */
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 22px;
-  border-radius: 6px;
-  margin-top: 25px;
-  transition: background 0.25s ease-in-out;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-}
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 20px;
+            border: 4px solid #eee;
+        }
 
-    footer {
-      margin-top: 50px;
-      background-color: #e3f2fd;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.95rem;
-      border-top: 2px solid #004b8d;
-    }
+        .container h1, .container h2 {
+            text-align: center;
+            color: #005a9c;
+        }
+        
+        .container h2 {
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
 
-    footer strong {
-      color: #004b8d;
-    }
-  </style>
+        .social-links {
+            text-align: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        .social-links li {
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .social-links a {
+            text-decoration: none;
+            color: #005a9c;
+            font-weight: bold;
+        }
+
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exercise-list li {
+            margin-bottom: 10px;
+        }
+
+        .exercise-list a {
+            display: block;
+            padding: 12px 15px;
+            background-color: #f4f4f4;
+            color: #005a9c;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, padding-left 0.3s;
+        }
+
+        .exercise-list a:hover {
+            background-color: #e9ecef;
+            padding-left: 25px;
+        }
+    </style>
 </head>
 
 <body>
-  <header>
-    <img
-      src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png"
-      alt="Logo Khoa Công nghệ Thông tin Kinh doanh"
-    />
-    <h1>Chào mừng đến với nội dung học HTML</h1>
-  </header>
+    <header>
+        <img
+            src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/BIT_logo.png"
+            alt="Logo Khoa Công nghệ Thông tin Kinh doanh"
+        />
+    </header>
 
-  <main>
-    <p>Đây là bài tập HTML thuộc môn <strong> Phát triển ứng dụng thương mại điện tử </strong>.</p>
-    <p>Khám phá và tìm hiểu các thẻ cơ bản trong HTML5.</p>
+    <main>
+        <div class="container">
+            
+            <img 
+                src="https://github.com/31231024833/quanghuynh/blob/main/retouch_2024092915583726.jpg?raw=true" 
+                alt="Ảnh đại diện" 
+                class="profile-pic">
+            
+            <h1>Huỳnh Nhật Quang</h1>
+            <p style="text-align: center; font-size: 1.1em; color: #555;">MSSV: 31231024833</p>
+            
+            <h2>Thông tin liên hệ</h2>
+            <ul class="social-links">
+                <li><a href="https://github.com/quanghuynh" target="_blank">GitHub</a></li>
+                <li><a href="https://www.facebook.com/howard.potts22" target="_blank">Facebook</a></li>
+                <li><a href="mailto:quanghuynh.31231024833@st.ueh.edu.vn" target="_blank">Email</a></li>
+            </ul>
+            
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+            
+            <h2>Bài tập HTML (Môn TMĐT)</h2>
+            
+            <ul class="exercise-list">
+                <li><a href="Tuan2/VeNha/Bai1.html" target="_blank">Bài tập 1: Định dạng H1, H2</a></li>
+                <li><a href="Tuan2/VeNha/Bai2.html" target="_blank">Bài tập 2: Marquee, Nền</a></li>
+                <li><a href="Tuan2/VeNha/Bai3.html" target="_blank">Bài tập 3: Danh sách</a></li>
+                <li><a href="Tuan2/VeNha/Bai4_5.html" target="_blank">Bài tập 4 & 5: Layout và Link</a></li>
+                <li><a href="Tuan2/VeNha/Bai6.html" target="_blank">Bài tập 6: Liên kết (Demo)</a></li>
+                <li><a href="Tuan2/VeNha/Bai7.html" target="_blank">Bài tập 7: Bảng</a></li>
+                <li><a href="Tuan2/VeNha/Bai8.html" target="_blank">Bài tập 8: HTML5 Layout</a></li>
+                <li><a href="Tuan2/VeNha/Bai9.html" target="_blank">Bài tập 9: HTML5 Form</a></li>
+            </ul>
+        </div>
+    </main>
 
-    <a href="https://bit.ueh.edu.vn/dao-tao" target="_blank">Tìm hiểu thêm về chương trình đào tạo</a>
-  </main>
+    <footer>
+        <p><strong>Giảng viên hướng dẫn:</strong> TS. Nguyễn Mạnh Tuấn</p>
+        <p><strong>Sinh viên thực hiện:</strong> Huỳnh Nhật Quang - <strong>MSSV:</strong> 31231024833</p>
+        <p><strong>Lớp:</strong> [Điền lớp của bạn] - <strong>Khóa:</strong> [Điền khóa của bạn]</p>
+        <p><strong>Khoa:</strong> Công nghệ thông tin kinh doanh</p>
+    </footer>
 
-  <footer>
-    <p><strong>Giảng viên hướng dẫn:</strong> TS. Nguyễn Mạnh Tuấn</p>
-    <p><strong>Sinh viên thực hiện:</strong> Huỳnh Nhật Quang - <strong> MSSV: </strong> 31231024833</p>
-    <p><strong>Lớp:</strong> EEP002 - <strong>Khóa:</strong> 49 </p>
-    <p><strong>Khoa:</strong> Công nghệ thông tin kinh doanh</p>
-  </footer>
 </body>
 </html>
