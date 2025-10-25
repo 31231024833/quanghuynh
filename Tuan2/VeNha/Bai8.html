@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 8</title>
+    <style>
+        section,
+        header,
+        hgroup,
+        footer,
+        nav,
+        article,
+        aside,
+        figure,
+        figcaption {
+            border: 1px solid rgb(200, 200, 200);
+            background-color: rgba(153, 153, 153, .15);
+            display: block;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        section,
+        aside {
+            float: left;
+        }
+
+        header,
+        footer {
+            clear: both;
+        }
+
+        #pagecontent {
+            margin: 0 auto;
+            max-width: 1045px;
+            width: 100%;
+            overflow: hidden;
+            /* Thêm để chứa float */
+        }
+
+        #sectioncontent1 {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        #asidecontent1 {
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Thêm style cho nav và ảnh placeholder */
+        #globalnav li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        img.placeholder {
+            width: 100%;
+            background-color: #eee;
+            border: 1px solid #ccc;
+            height: 150px;
+            display: block;
+            text-align: center;
+            line-height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bài tập 8: Chuyển đổi HTML4 sang HTML5 Layout</h1>
+
+    <div id="pagecontent">
+        <header id="pageheader">
+            <hgroup id="pagehgroup">
+                <h1>KHOA CÔNG NGHỆ THÔNG TI KINH DOANH</h1>
+                <h2>School of Business Information Technology</h2>
+            </hgroup>
+            <nav id="globalnav">
+                <ul>
+                    <li>Chương trình Đại học</li>
+                    <li>CT Liên thông Đại học</li>
+                    <li>Chương trình Sau đại học</li>
+                    <li>Chương trình quốc tế</li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="sectioncontent1">
+            <header>
+                <h2>Chương trình Đại học</h2>
+            </header>
+            <article>
+                <header>
+                    <h3>Hệ thống hoạch định nguồn lực doanh nghiệp (ERP)</h3>
+                </header>
+                <p>Nhu cầu xã hội Hoạch định các nguồn lực một cách hiệu quả...</p>
+                <footer>
+                    <p>Hệ thống hoạch định nguồn lực doanh nghiệp (ERP) [...]</p>
+                </footer>
+            </article>
+            <figure>
+                <img src="erp_image.jpg" alt="ERP Product" class="placeholder">
+                <figcaption>PRODUCT</figcaption>
+            </figure>
+        </section>
+
+        <aside id="asidecontent1">
+            <header>
+                <h2>Liên kết</h2>
+            </header>
+            <article>
+                <header>
+                    <h3><a href="#">Hệ thống thông tin kinh doanh</a></h3>
+                </header>
+                <figure>
+                    <img src="globe_image.jpg" alt="Hệ thống thông tin" class="placeholder">
+                </figure>
+                <p>Nhu cầu xã hội Hiện nay, ứng dụng công nghệ trong điều hành...</p>
+                <footer>
+                    <p>CDD</p>
+                </footer>
+            </article>
+        </aside>
+
+        <footer id="pagefooter">
+            <p>Page Footer</p>
+        </footer>
+    </div>
+
+    <p style="clear:both; padding: 20px 0;">
+        <a href="../../index.html">Quay về trang chủ</a>
+    </p>
+</body>
+
+</html>
