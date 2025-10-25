@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 9</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        li {
+            margin-bottom: 20px;
+            list-style-position: inside;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="url"],
+        input[type="date"],
+        input[type="color"] {
+            width: 95%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bài tập 9: HTML5 Form Validation</h1>
+
+    <form method="post" action="" id="quiz">
+        <ol>
+            <li>
+                <label for="q1">What color do you get when you mix red and yellow?</label>
+                <input type="color" name="q1" id="q1" required>
+            </li>
+            <li>
+                <label for="q2">What is the first primary number greater than 20?</label>
+                <input type="number" name="q2" id="q2" min="20" step="1" placeholder="Nhập một số từ 20 trở lên"
+                    required>
+            </li>
+            <li>
+                <label for="q3">Using exactly four 9s and no other digits, write an equation which evaluates to
+                    100.</label>
+                <input type="text" name="q3" id="q3" placeholder="e.g., 99+(9/9)" required>
+            </li>
+            <li>
+                <label for="q4">What date was John F. Kennedy assassinated?</label>
+                <input type="date" name="q4" id="q4" required>
+            </li>
+            <li>
+                <label for="q5">What is the world's most popular search engine?</label>
+                <input type="url" name="q5" id="q5" placeholder="https://www.example.com" required>
+            </li>
+        </ol>
+        <input type="submit" value="Submit">
+    </form>
+
+    <hr>
+    <a href="../../index.html" style="margin-left: 20px;">Quay về trang chủ</a>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Bài 4 & 5</title>
+    <style>
+        .programs-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .program-card {
+            flex-basis: 30%;
+            min-width: 250px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .program-card a {
+            text-decoration: none;
+            color: #005a9c;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Bài tập 4 & 5: Layout 3 cột và Liên kết</h1>
+
+    <div class="programs-container">
+
+        <div class="program-card">
+            <img src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/bit-770x385.jpg" alt="Kỹ thuật phần mềm">
+            <h3><a href="http://bit.ueh.edu.vn/cong-nghe-phan-mem/">KỸ THUẬT PHẦN MỀM</a></h3>
+            <p>Nhu cầu xã hội Cách mạng công nghiệp 4.0...</p>
+        </div>
+
+        <div class="program-card">
+            <img src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/e-commerce-770x385.jpg"
+                alt="Thương mại điện tử">
+            <h3><a href="http://bit.ueh.edu.vn/chuyen-nganh-thuong-mai-dien-tu/">NGÀNH THƯƠNG MẠI ĐIỆN TỬ</a></h3>
+            <p>Nhu cầu xã hội Ngành Thương mại điện tử...</p>
+        </div>
+
+        <div class="program-card">
+            <img src="https://bit.ueh.edu.vn/wp-content/uploads/2017/06/mis-770x385.jpg"
+                alt="Hệ thống thông tin kinh doanh">
+            <h3><a href="http://bit.ueh.edu.vn/chuyen-nganh-he-thong-thong-tin-kinh-doanh/">HỆ THỐNG THÔNG TIN KINH
+                    DOANH</a></h3>
+            <p>Nhu cầu xã hội Hiện nay, ứng dụng công nghệ...</p>
+        </div>
+    </div>
+
+    <hr>
+    <a href="../../index.html">Quay về trang chủ</a>
+</body>
+
+</html>
