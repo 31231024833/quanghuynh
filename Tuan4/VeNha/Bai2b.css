@@ -1,0 +1,115 @@
+/* ----- PHẦN CSS NỀN (Bắt buộc) ----- */
+body {
+    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.view {
+    width: 300px;
+    height: 200px;
+    margin: 20px;
+    float: left;
+    border: 5px solid white;
+    box-shadow: 0 0 5px #aaa;
+    position: relative;
+    overflow: hidden;
+    /* Rất quan trọng */
+}
+
+.view img {
+    width: 100%;
+    height: auto;
+    position: relative;
+}
+
+.view .mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    /* Giúp padding không làm vỡ layout */
+    text-align: center;
+}
+
+.view h2 {
+    font-size: 24px;
+    padding-bottom: 5px;
+}
+
+.view p {
+    font-size: 14px;
+}
+
+.view a.info {
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+    background: #000;
+    color: #fff;
+    margin-top: 10px;
+}
+
+/* ----- PHẦN BÀI LÀM 2b (Ví dụ 7 đã sửa) ----- */
+.view-seventh img {
+    transition: all 0.5s ease-out;
+    opacity: 1;
+}
+
+.view-seventh .mask {
+    background-color: rgba(77, 44, 35, 0.5);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    transform: translateY(-200px) rotate(180deg);
+}
+
+.view-seventh h2 {
+    /* (b.ii) Thêm rotate(180deg) vào trạng thái ban đầu */
+    transform: translateY(-200px) rotate(180deg);
+    transition: all 0.2s ease-in-out;
+}
+
+.view-seventh p {
+    /* (b.ii) Thêm rotate(180deg) vào trạng thái ban đầu */
+    transform: translateY(-200px) rotate(180deg);
+    transition: all 0.2s ease-in-out;
+}
+
+.view-seventh a.info {
+    /* (b.ii) Thêm rotate(180deg) vào trạng thái ban đầu */
+    transform: translateY(-200px) rotate(180deg);
+    transition: all 0.2s ease-in-out;
+}
+
+.view-seventh:hover img {
+    /* (b.i) Bỏ scale(0) và opacity: 0 để giữ lại ảnh */
+    transform: rotate(720deg);
+    opacity: 1;
+}
+
+.view-seventh:hover .mask {
+    opacity: 1;
+    transform: translateY(0px) rotate(0deg);
+    transition-delay: 0.4s;
+}
+
+.view-seventh:hover h2 {
+    /* (b.ii) Thêm rotate(0deg) vào trạng thái hover */
+    transform: translateY(0px) rotate(0deg);
+    transition-delay: 0.7s;
+}
+
+.view-seventh:hover p {
+    /* (b.ii) Thêm rotate(0deg) vào trạng thái hover */
+    transform: translateY(0px) rotate(0deg);
+    transition-delay: 0.6s;
+}
+
+.view-seventh:hover a.info {
+    /* (b.ii) Thêm rotate(0deg) vào trạng thái hover */
+    transform: translateY(0px) rotate(0deg);
+    transition-delay: 0.5s;
+}

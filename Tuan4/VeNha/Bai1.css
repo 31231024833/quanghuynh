@@ -1,0 +1,42 @@
+/* style.css */
+
+/* --- Trạng thái mặc định (ban đầu) --- */
+.khoa-text {
+    /* a. Màu nền: xanh */
+    background-color: blue;
+
+    /* b. Font chữ: 20px */
+    font-size: 20px;
+
+    /* c. Transform: matrix(1,0,0,1,0,0) (đây là trạng thái mặc định) */
+    transform: matrix(1, 0, 0, 1, 0, 0);
+
+    /* Thêm các thuộc tính để hiệu ứng đẹp hơn (KHÔNG bắt buộc) */
+    color: white;
+    /* Chữ màu trắng cho dễ đọc trên nền xanh/đỏ */
+    padding: 20px;
+    /* Thêm khoảng đệm */
+    font-weight: bold;
+    display: inline-block;
+    /* Giúp box chỉ rộng bằng nội dung */
+
+    /* --- PHẦN NÂNG CAO: Thêm transition để hiệu ứng mượt mà --- */
+    /* * transition: [thuộc tính] [thời gian] [kiểu chuyển động];
+     * Chúng ta áp dụng cho cả 3 thuộc tính thay đổi.
+     */
+    transition: background-color 0.5s ease,
+        font-size 0.5s ease,
+        transform 0.5s ease;
+}
+
+/* --- Trạng thái khi HOVER CHUỘT VÀO --- */
+.khoa-text:hover {
+    /* a. Màu nền: chuyển sang đỏ */
+    background-color: red;
+
+    /* b. Font chữ: chuyển sang 50px */
+    font-size: 50px;
+
+    /* c. Transform: chuyển sang matrix(...) */
+    transform: matrix(1.4, -0.54, 0.54, 1.4, 0, 0);
+}

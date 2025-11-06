@@ -1,0 +1,60 @@
+/* --- Tùy chỉnh "Material/Bootstrap" cho đẹp mắt --- */
+body {
+    /* Đặt nền xám nhạt để khối nổi bật hơn */
+    background-color: #f0f2f5;
+    font-family: Arial, sans-serif;
+
+    /* Căn khối ra giữa màn hình cho chuyên nghiệp */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* --- Trạng thái mặc định (Bài 1 + "Material") --- */
+.khoa-text {
+    /* Yêu cầu gốc của Bài 1 */
+    font-size: 20px;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+
+    /* Thêm phong cách "Material/Bootstrap" */
+    background-color: #007bff;
+    /* Màu xanh "primary" của Bootstrap */
+    color: white;
+    font-weight: bold;
+    display: inline-block;
+    padding: 25px 40px;
+    /* Thêm đệm cho đẹp */
+    border-radius: 8px;
+    /* Bo góc mềm mại */
+
+    /* (QUAN TRỌNG) Thêm bóng đổ (Shadow) kiểu Material Design */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+
+    /* Thêm transition cho tất cả thuộc tính để mượt mà */
+    transition: background-color 0.4s ease,
+        font-size 0.4s ease,
+        transform 0.4s ease,
+        box-shadow 0.4s ease;
+}
+
+/* --- Trạng thái HOVER (Yêu cầu Bài 1) --- */
+.khoa-text:hover {
+    /* a. Màu nền: chuyển sang đỏ */
+    background-color: #dc3545;
+    /* Màu đỏ "danger" của Bootstrap */
+
+    /* b. Font chữ: chuyển sang 50px */
+    font-size: 50px;
+
+    /* c. Transform: chuyển sang matrix(...) */
+    transform: matrix(1.4, -0.54, 0.54, 1.4, 0, 0);
+
+    /* Nâng cấp hiệu ứng: khi hover thì bóng đổ đậm hơn */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2), 0 12px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Lưu ý: Bạn không cần thêm @keyframes fadeInDownBig ở đây.
+  Nó đã được tải từ file "animate.min.css" mà chúng ta link trong HTML.
+*/
