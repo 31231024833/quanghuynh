@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bài 2</title>
+</head>
+<body>
+
+  <label>Họ và tên:</label> <!-- tạo nhãn cho 1 ô nhập liệu, nội dung Họ và tên -->
+  <input type="text" id="fullname" placeholder="Nhập họ và tên">
+  <!-- type=text: Xác định đây là ô nhập chữ (text input) -->
+  <!-- id="fullname": Gán định danh (ID) duy nhất cho input, giúp CSS/JS truy cập hoặc liên kết với label. -->
+  <!-- placeholder="Nhập họ và tên" Dòng chữ mờ hiển thị trong ô khi chưa nhập gì, giúp gợi ý người dùng. -->
+  <!-- onclick="canhBao()": Sự kiện onclick; khi bấm → chạy hàm canhBao() -->
+
+  <button onclick="canhBao()">Cảnh báo</button>
+  <!--<button onclick="canhBao()">Cảnh báo</button>: Tạo một nút bấm (button) trên giao diện. Khi người dùng nhấn nút, nó sẽ gọi hàm JavaScript có tên canhBao(). -->
+
+  <script>
+    function canhBao() {
+      let value = document.getElementById("fullname").value;
+      alert("Truy tìm " + value);
+    }
+  </script>
+ <!-- function canhBao() {: hàm cảnh báo -->
+   <!-- document.getElementById("fullname") → Lấy thẻ HTML có id="fullname" (chính là ô input bạn tạo ở trên). -->
+   <!-- .value → Lấy nội dung mà người dùng đã nhập vào ô đó.
+    let value = ... → Lưu nội dung đó vào biến value
+    👉 Ví dụ: nếu người dùng nhập "Nam", thì value = "Nam".
+alert("Truy tìm " + value); alert(...) tạo ra hộp thông báo bật lên.
+"Truy tìm " + value ghép chuỗi: Nếu value = "Nam", thông báo sẽ là: Truy tìm Nam. 
+Tóm lại:
+Người dùng nhập tên vào ô input.
+Nhấn nút Cảnh báo.
+Hàm canhBao() chạy:
+Lấy tên người dùng nhập.
+Hiện thông báo: "Truy tìm [tên]"
+ -->
+</body>
+</html>

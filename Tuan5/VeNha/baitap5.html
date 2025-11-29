@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bạn có thích mình không?</title>
+
+<style>
+    body{
+        font-family: "Segoe UI", sans-serif;
+        text-align: center;
+        padding-top: 60px;
+        background: linear-gradient(135deg, #ffe9e9, #ffc1d6);
+    }
+    h1{
+        font-size: 32px;
+        margin-bottom: 40px;
+        color: #333;
+        letter-spacing: 1px;
+    }
+    .btn{
+        padding: 12px 32px;
+        margin: 20px;
+        font-size: 22px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.25s;
+    }
+    #yes{
+        background: #4CAF50;
+        color: white;
+    }
+    #yes:hover{
+        transform: scale(1.1);
+        background: #45a049;
+    }
+    #no{
+        background: #f44336;
+        color: white;
+        position: relative;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>BẠN CÓ THÍCH MÌNH KHÔNG?</h1>
+
+<button id="yes" class="btn">CÓ</button>
+<button id="no" class="btn">KHÔNG</button>
+
+<script>
+    let wrongCount = 0;
+    const btnYes = document.getElementById("yes");
+    const btnNo = document.getElementById("no");
+
+    // Khi nhấn nút KHÔNG
+    btnNo.onclick = () => {
+        wrongCount++;
+
+        if (wrongCount < 3) {
+            alert("Có thể bạn nên chọn lại… 😉");
+
+            // đổi vị trí nút
+            const randX = Math.random() * 300 - 150; 
+            const randY = Math.random() * 200 - 100;
+
+            btnNo.style.transform = `translate(${randX}px, ${randY}px)`;
+        } else {
+            alert("Bạn nhấn sai 3 lần rồi. Mình giúp bạn chọn CÓ nha 😘");
+        }
+    };
+
+    // Khi nhấn nút CÓ
+    btnYes.onclick = () => {
+        document.body.innerHTML = `
+            <h1 style="margin-top:120px; color:#e91e63; font-size:40px;">
+                Xin lỗi, bạn không phải là đối tượng của mình 😅
+            </h1>
+        `;
+    };
+</script>
+
+</body>
+</html>

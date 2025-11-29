@@ -1,0 +1,96 @@
+<html>
+<head>
+  <style>
+    #dropdown {
+      width: 200px;
+      padding: 0;
+      margin: 0;
+    }
+/* ✔️ Đây là CSS dành cho phần tử có id="dropdown" (thường là <ul id="dropdown">).
+width: 200px;	Đặt chiều rộng của menu là 200px.
+padding: 0;	Xóa khoảng trống bên trong thẻ (padding mặc định của <ul>).
+margin: 0;	Xóa khoảng trống bên ngoài thẻ (margin mặc định của <ul>). */    
+
+    #dropdown li {
+      list-style: none;  /* bỏ dấu chấm */
+      line-height: 30px; /* chiều cao dòng */
+      background: rgb(152, 63, 199); /* màu nền */
+      margin: 2px; /* Tạo khoảng cách 2px giữa các mục menu. */
+    }
+
+    #dropdown li a {
+      margin-left: 10px; /* Đẩy chữ trong thẻ <a> sang phải 10px để nhìn đẹp hơn */
+      color: #FFF;
+      text-decoration: none; /* Bỏ gạch chân mặc định của thẻ <a> */
+      display: block; /* Biến thẻ <a> thành dạng block để dễ click toàn bộ vùng */
+    }
+
+    #dropdown ul { /* Áp dụng cho submenu nằm trong dropdown. */
+      display: none;  /* Ẩn menu con (submenu) mặc định, chỉ hiện khi hover/click */
+      padding: 0;  /* Xóa padding mặc định của thẻ <ul> */
+      margin: 0;  /* Xóa margin mặc định của thẻ <ul> */
+      background: rgb(255, 31, 69);
+    }
+
+    #dropdown ul li { /* Áp dụng cho các mục con trong submenu. */
+      background-color: rgb(102, 214, 102); 
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul id="dropdown"> <!-- Danh sách menu chính, dùng id để CSS và JS thao tác -->
+    <li><a href="#">Trang chủ</a></li> <!-- Mục Trang chủ (không có submenu) -->
+    <li> <!-- Mục Sản phẩm, có submenu -->
+      <a href="#">Sản phẩm</a> <!-- Link của mục chính -->
+      <ul> <!-- Submenu -->
+        <li><a href="#">Gạch cao cấp</a></li> <!-- Mục con 1 -->
+        <li><a href="#">Gạch thủ công</a></li> <!-- Mục con 2 -->
+        <li><a href="#">Gạch hoa văn</a></li> <!-- Mục con 3 -->
+      </ul>
+    </li>
+    <li> <!-- Mục Tin tức -->
+      <a href="#">Tin tức</a>
+      <ul>
+        <li><a href="#">Tin công nghệ</a></li>
+        <li><a href="#">Tin trong nước</a></li>
+        <li><a href="#">Tin thời sự</a></li>
+      </ul>
+    </li>
+    <li>  <!-- Mục Dịch vụ -->
+      <a href="#">Dịch vụ</a>
+      <ul>
+        <li><a href="#">Thiết kế web</a></li>
+        <li><a href="#">Quảng cáo web</a></li>
+        <li><a href="#">Thiết kế đồ họa</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <script>
+    // Lấy tất cả các thẻ li có submenu (ul con)
+    const items = document.querySelectorAll('#dropdown > li');
+    // Duyệt từng <li> trong menu chính
+    items.forEach(li => {
+    // Gắn sự kiện click cho mỗi <li>
+    li.addEventListener('click', function(e) {
+    // Ngăn không cho click vào thẻ <a> bị load lại trang
+        e.preventDefault();
+   // Tìm submenu <ul> nằm trong <li> hiện tại
+        const submenu = this.querySelector('ul');
+    // Kiểm tra nếu <li> có submenu thì mới xử lý
+        if (submenu) {
+          // Toggle display. Nếu submenu đang mở (display === 'block') thì đóng lại
+          if (submenu.style.display === 'block') {
+            submenu.style.display = 'none'; // Ẩn submenu
+          } else {
+            submenu.style.display = 'block'; // Hiện submenu
+          }
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

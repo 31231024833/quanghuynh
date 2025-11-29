@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Đồng hồ đếm ngược bằng JS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            span{border: solid 1px #ed1d1d; padding: 2px;} /* Tạo viền đỏ cho ô hiển thị giờ/phút/giây */
+        </style>
+        <script language="javascript">
+
+            var h = null; // Giờ
+            var m = null; // Phút
+            var s = null; // Giây
+            
+            var timeout = null; // Timeout
+            
+function start()
+{
+    // Lấy giá trị nhập vào. Hàm dùng để chuyển chuỗi (string) thành số nguyên (integer).
+    h = parseInt(document.getElementById("h_val").value);
+    // document.getElementById("h_val") → tìm thẻ HTML có id = "h_val"
+    // .value → lấy giá trị mà người dùng nhập vào
+    // parseInt(...) → chuyển chuỗi (text) sang số nguyên (integer)
+    
+    m = parseInt(document.getElementById("m_val").value);
+    s = parseInt(document.getElementById("s_val").value);
+
+    // Nếu giá trị rỗng hoặc không hợp lệ → gán về 0
+    if (isNaN(h)) h = 0;
+    if (isNaN(m)) m = 0;
+    if (isNaN(s)) s = 0;
+
+    // Hàm đếm ngược
+    function countdown() {
+        // Nếu giờ, phút, giây đều = 0 thì dừng
+        if (h == 0 && m == 0 && s == 0) {
+            clearTimeout(timeout);
+            alert("Hết giờ!");
+            return;
+        }
+
+        // Giảm giây
+        s--;
+        if (s < 0) {
+            s = 59;
+            m--;
+        }
+        if (m < 0) {
+            m = 59;
+            h--;
+        }
+
+        // Cập nhật giao diện. Là hàm dùng để lấy 1 thẻ HTML dựa trên thuộc tính id.
+        document.getElementById("h").innerHTML = h;
+        document.getElementById("m").innerHTML = m;
+        document.getElementById("s").innerHTML = s;
+
+        // Gọi lại sau 1 giây. Hàm dùng để chạy 1 đoạn code sau một khoảng thời gian (tính bằng mili giây).
+        timeout = setTimeout(countdown, 1000);
+    }
+
+    countdown();
+}
+            
+            function stop(){
+                clearTimeout(timeout); //Dùng để dừng hàm setTimeout trước đó.
+            }
+        </script>
+    </head>
+    <body>
+        <div>
+            <strong>
+                Nhập thông tin ban đầu: <br/>
+            </strong>
+            <input type="text" id="h_val" placeholder="Giờ" value=""/> <br/>
+            <input type="text" id="m_val" placeholder="Phút" value=""/> <br/>
+            <input type="text" id="s_val" placeholder="Giây" value=""/>
+            <input type="button" value="Start" onclick="start()"/>
+            <input type="button" value="Stop" onclick="stop()"/>  <br/> <br/>
+        </div>
+        
+        <div>
+            <span id="h">Giờ</span> :
+            <span id="m">Phút</span> :
+            <span id="s">Giây</span>
+        </div>
+    </body>
+</html>
