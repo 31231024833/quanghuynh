@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Slayer - Purple Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* --- CẤU HÌNH GIAO DIỆN TÍM LỒNG LỘN --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #120024, #32004a, #1a0b2e);
+            font-family: 'Roboto', sans-serif;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Press Start 2P', cursive;
+            color: #d946ef;
+            text-shadow: 0 0 10px #d946ef, 0 0 20px #8b5cf6;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        /* Sân đấu */
+        .arena {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            width: 80%;
+            max-width: 1000px;
+            height: 400px;
+            margin-top: 30px;
+            position: relative;
+            background: url('https://img.freepik.com/free-vector/dark-purple-pixel-art-background_23-2148967398.jpg') center/cover no-repeat;
+            border: 4px solid #a855f7;
+            box-shadow: 0 0 20px #a855f7, inset 0 0 50px #000;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        /* Nhân vật */
+        .character {
+            position: relative;
+            width: 200px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .character img {
+            width: 180px;
+            height: 180px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+        }
+
+        /* Thanh máu */
+        .hp-bar-container {
+            width: 100%;
+            height: 20px;
+            background-color: #333;
+            border: 2px solid #fff;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hp-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff00cc, #333399);
+            width: 100%;
+            transition: width 0.5s ease-out;
+        }
+
+        .hp-text {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px black;
+            line-height: 20px;
+        }
+
+        .stats {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 5px;
+            border-radius: 5px;
+            margin-top: 5px;
+            font-size: 14px;
+            color: #e0aaff;
+        }
+
+        /* --- HIỆU ỨNG ANIMATION --- */
+
+        /* Tấn công */
+        @keyframes attackRight {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(100px) rotate(10deg);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes attackLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-100px) rotate(-10deg);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .attack-anim-right {
+            animation: attackRight 0.4s ease;
+        }
+
+        .attack-anim-left {
+            animation: attackLeft 0.4s ease;
+        }
+
+        /* Bị thương */
+        @keyframes shake {
+            0% {
+                transform: translate(1px, 1px) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            10% {
+                transform: translate(-1px, -2px) rotate(-1deg);
+                filter: hue-rotate(90deg) sepia(1) saturate(5) hue-rotate(-50deg);
+            }
+
+            /* Đỏ lên */
+            20% {
+                transform: translate(-3px, 0px) rotate(1deg);
+            }
+
+            30% {
+                transform: translate(3px, 2px) rotate(0deg);
+            }
+
+            40% {
+                transform: translate(1px, -1px) rotate(1deg);
+            }
+
+            50% {
+                transform: translate(-1px, 2px) rotate(-1deg);
+            }
+
+            60% {
+                transform: translate(-3px, 1px) rotate(0deg);
+            }
+
+            70% {
+                transform: translate(3px, 1px) rotate(-1deg);
+            }
+
+            80% {
+                transform: translate(-1px, -1px) rotate(1deg);
+            }
+
+            90% {
+                transform: translate(1px, 2px) rotate(0deg);
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                transform: translate(1px, -2px) rotate(-1deg);
+            }
+        }
+
+        .damage-anim {
+            animation: shake 0.5s;
+        }
+
+        /* Né đòn */
+        @keyframes dodge {
+            0% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            50% {
+                opacity: 0.3;
+                transform: translateX(-50px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .dodge-anim {
+            animation: dodge 0.5s ease;
+        }
+
+        /* --- BẢNG ĐIỀU KHIỂN & LOG --- */
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 16px;
+            color: white;
+            background: transparent;
+            border: 2px solid #d946ef;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #d946ef;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background: #d946ef;
+            box-shadow: 0 0 30px #d946ef;
+            transform: scale(1.05);
+        }
+
+        .btn:disabled {
+            border-color: #555;
+            color: #555;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        .battle-log {
+            width: 80%;
+            max-width: 800px;
+            height: 150px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid #a855f7;
+            border-radius: 10px;
+            padding: 10px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 2px;
+        }
+
+        .log-hero {
+            color: #5eead4;
+        }
+
+        /* Xanh ngọc */
+        .log-dragon {
+            color: #fca5a5;
+        }
+
+        /* Đỏ nhạt */
+        .log-crit {
+            color: #fbbf24;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* Vàng */
+        .log-win {
+            color: #d946ef;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>ANH HÙNG DIỆT RỒNG<br><span style="font-size: 14px; color: #c084fc">Phiên bản Slide 31 - Tím Lịm Tìm Sim</span>
+    </h1>
+
+    <div class="arena">
+        <!-- ANH HÙNG -->
+        <div class="character" id="hero">
+            <div class="hp-bar-container">
+                <div class="hp-bar-fill" id="hero-hp-bar" style="width: 100%;"></div>
+                <div class="hp-text"><span id="hero-hp-text">0</span> / <span id="hero-max-hp">0</span></div>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3408/3408506.png" alt="Hero">
+            <div class="stats">
+                <strong>Anh Hùng (Lv 5)</strong><br>
+                STR: <span id="h-str"></span> | AGI: <span id="h-agi"></span> | INT: <span id="h-int"></span>
+            </div>
+        </div>
+
+        <!-- RỒNG -->
+        <div class="character" id="dragon">
+            <div class="hp-bar-container">
+                <div class="hp-bar-fill" id="dragon-hp-bar"
+                    style="width: 100%; background: linear-gradient(90deg, #ff0000, #990000);"></div>
+                <div class="hp-text"><span id="dragon-hp-text">600</span> / 600</div>
+            </div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3093/3093844.png" alt="Dragon"
+                style="transform: scaleX(-1);">
+            <div class="stats">
+                <strong>Rồng Già</strong><br>
+                STR: 100 | AGI: 15 | INT: 80
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="btn-attack" class="btn" onclick="battleRound()">⚔️ TẤN CÔNG</button>
+        <button id="btn-reset" class="btn" onclick="initGame()" style="border-color: #fff; box-shadow: none;">Chơi
+            Lại</button>
+    </div>
+
+    <div class="battle-log" id="battle-log">
+        <div class="log-entry" style="color: #ccc; text-align: center;">--- Trận đấu bắt đầu ---</div>
+    </div>
+
+    <script>
+        // --- KHAI BÁO BIẾN (Theo slide 28 & 31) ---
+        var level = 5;
+        var health = level * 100; // Máu Anh Hùng (500)
+        var maxHealth = health;
+
+        // Giả định chỉ số cho Anh hùng (Slide không cho số cụ thể ngoài Dragon, tự cho để game cân bằng)
+        var strength = 120;
+        var agility = 25;
+        var intel = 30;
+
+        // Chỉ số Rồng (Theo slide)
+        var dragonMaxHealth = 600;
+        var dragonHealth = 600;
+        var dragonStr = 100;
+        var dragonAgi = 15;
+        var dragonInt = 80;
+
+        var isGameOver = false;
+
+        // --- CẬP NHẬT UI BAN ĐẦU ---
+        function initGame() {
+            level = 5;
+            health = level * 100;
+            dragonHealth = 600;
+            isGameOver = false;
+
+            document.getElementById('h-str').innerText = strength;
+            document.getElementById('h-agi').innerText = agility;
+            document.getElementById('h-int').innerText = intel;
+            document.getElementById('hero-max-hp').innerText = maxHealth;
+
+            updateHealthUI();
+            document.getElementById('btn-attack').disabled = false;
+            document.getElementById('btn-attack').innerText = "⚔️ TẤN CÔNG";
+
+            // Clear log
+            const log = document.getElementById('battle-log');
+            log.innerHTML = '<div class="log-entry" style="color: #ccc; text-align: center;">--- Trận đấu bắt đầu ---</div>';
+
+            // Reset animation classes if any
+            document.getElementById('hero').className = 'character';
+            document.getElementById('dragon').className = 'character';
+        }
+
+        function updateHealthUI() {
+            // Update Hero
+            var heroPercent = (health / maxHealth) * 100;
+            if (heroPercent < 0) heroPercent = 0;
+            document.getElementById('hero-hp-bar').style.width = heroPercent + "%";
+            document.getElementById('hero-hp-text').innerText = health > 0 ? health : 0;
+
+            // Update Dragon
+            var dragonPercent = (dragonHealth / dragonMaxHealth) * 100;
+            if (dragonPercent < 0) dragonPercent = 0;
+            document.getElementById('dragon-hp-bar').style.width = dragonPercent + "%";
+            document.getElementById('dragon-hp-text').innerText = dragonHealth > 0 ? dragonHealth : 0;
+        }
+
+        function addLog(msg, type) {
+            const log = document.getElementById('battle-log');
+            const p = document.createElement('div');
+            p.className = 'log-entry ' + type;
+            p.innerHTML = msg;
+            log.prepend(p); // Thêm vào đầu để dễ đọc tin mới nhất
+        }
+
+        function animateChar(charId, animClass) {
+            const char = document.getElementById(charId);
+            char.classList.remove('attack-anim-right', 'attack-anim-left', 'damage-anim', 'dodge-anim');
+            void char.offsetWidth; // Trigger reflow để chạy lại animation
+            char.classList.add(animClass);
+        }
+
+        // --- LOGIC TRẬN ĐẤU (Dựa trên Slide 31) ---
+        function battleRound() {
+            if (isGameOver) return;
+
+            // Khóa nút để tránh spam
+            document.getElementById('btn-attack').disabled = true;
+
+            // --- 1. ANH HÙNG TẤN CÔNG ---
+            animateChar('hero', 'attack-anim-right'); // Animation Hero lao tới
+
+            setTimeout(() => {
+                // Tính toán hit
+                var heroHit = (Math.random() * 100) > dragonAgi;
+
+                if (heroHit) {
+                    var dmg = strength;
+                    var isCrit = (Math.random() * 100) < intel;
+
+                    if (isCrit) {
+                        dmg = strength * 2;
+                        animateChar('dragon', 'damage-anim');
+                        addLog(`🔥 CHÍ MẠNG! Bạn gây <b>${dmg}</b> sát thương!`, 'log-hero log-crit');
+                    } else {
+                        animateChar('dragon', 'damage-anim');
+                        addLog(`⚔️ TRẢM LONG! Bạn gây ${dmg} sát thương.`, 'log-hero');
+                    }
+
+                    dragonHealth = dragonHealth - dmg;
+                    updateHealthUI();
+
+                    // Kiểm tra Rồng chết chưa
+                    if (dragonHealth <= 0) {
+                        endGame(true);
+                        return;
+                    }
+
+                } else {
+                    animateChar('dragon', 'dodge-anim'); // Rồng né
+                    addLog(`💨 XÍ HỤT! Rồng đã lượn tránh đòn của bạn!`, 'log-dragon');
+                }
+
+                // --- 2. RỒNG PHẢN CÔNG (Sau 1s) ---
+                setTimeout(() => {
+                    dragonTurn();
+                }, 1000);
+
+            }, 400); // Delay nhỏ để khớp animation lao tới
+        }
+
+        function dragonTurn() {
+            animateChar('dragon', 'attack-anim-left'); // Rồng lao tới
+
+            setTimeout(() => {
+                var dragonHit = (Math.random() * 100) > agility;
+
+                if (dragonHit) {
+                    var dmg = dragonStr;
+                    var isCrit = (Math.random() * 100) < dragonInt;
+
+                    if (isCrit) {
+                        dmg = dragonStr * 2;
+                        animateChar('hero', 'damage-anim');
+                        addLog(`🔥 NGUY HIỂM! Rồng khạc lửa chí mạng <b>${dmg}</b> sát thương!`, 'log-dragon log-crit');
+                    } else {
+                        animateChar('hero', 'damage-anim');
+                        addLog(`☄️ HỎA CẦU! Rồng gây ${dmg} sát thương.`, 'log-dragon');
+                    }
+
+                    health = health - dmg;
+                    updateHealthUI();
+
+                    // Kiểm tra Hero chết chưa
+                    if (health <= 0) {
+                        endGame(false);
+                        return;
+                    }
+
+                } else {
+                    animateChar('hero', 'dodge-anim'); // Hero né
+                    addLog(`🛡️ MAY MẮN! Bạn đã tránh được đòn của Rồng!`, 'log-hero');
+                }
+
+                // Mở khóa nút
+                document.getElementById('btn-attack').disabled = false;
+
+            }, 400);
+        }
+
+        function endGame(isWin) {
+            isGameOver = true;
+            document.getElementById('btn-attack').innerText = isWin ? "CHIẾN THẮNG" : "THẤT BẠI";
+            if (isWin) {
+                addLog(`🏆 BATTLE WON! Chúc mừng bạn đã đạt danh hiệu "Dũng sĩ diệt Rồng"!`, 'log-win');
+                // Hiệu ứng Rồng biến mất
+                document.getElementById('dragon').style.opacity = '0.5';
+                document.getElementById('dragon').style.filter = 'grayscale(100%)';
+            } else {
+                addLog(`☠️ THẤT BẠI! Bạn đã trở thành món thịt nướng của Rồng!`, 'log-win');
+                // Hiệu ứng Hero biến mất
+                document.getElementById('hero').style.opacity = '0.5';
+                document.getElementById('hero').style.filter = 'grayscale(100%)';
+            }
+        }
+
+        // Khởi chạy game lần đầu
+        initGame();
+
+    </script>
+
+</body>
+
+</html>
